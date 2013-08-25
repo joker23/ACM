@@ -1,3 +1,9 @@
 These are my implementation of acm practice problems
 
-as of now I am still in the process of porting all of them over...please be patient :)
+Current Stats:
+
+site		:	solved
+Poj			: 		99
+CodeForces	:		12
+CodeChef	:		12
+spoj		:		 8
