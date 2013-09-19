@@ -46,6 +46,7 @@ public class Main {
 			} for(int i=0;i<hcount;i++)
 				for(int j=0;j<mcount;j++)
 					graph[i+1][j+mcount+1] = 1;
+			//begin min cost max flow
 	        found = new boolean[graph.length];
 	        flow = new int[graph.length][graph.length];
 	        dist = new int[graph.length+1];
