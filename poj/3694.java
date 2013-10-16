@@ -1,7 +1,7 @@
 import java.util.*;
 
 public class Main {
-
+	//tarjan scc
 	static final int MAXV = 100000, MAXE = 400000;
 	static int to[], nxt[], last[], E, bridges;
 	static int level[], par[], low[];
