@@ -1,29 +1,26 @@
-
 import java.util.*;
+import java.math.*;
+import java.io.*;
 
 public class Main{
 	static Scanner in;
-	public static void main(String[] args){
-		in = new Scanner(System.in);
-		int test = in.nextInt();
-		while(test --> 0){
-			int n = in.nextInt();
-			int[][] graph = new int[2*n+2][2*n+2];
-			for(int i = 1; i<=n; i++){
-				graph[0][i] = 1;
-				graph[n+i][2*n+1] = 1;
-			}
+	static final int MOD = 1000000007;
+	public static void main(String[] args) throws IOException{
+		BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+		PrintWriter out = new PrintWriter(System.out);
+		int test = Integer.parseInt(in.readLine().trim());
+		while(test-->0){
+			int n = Integer.parseInt(in.readLine().trim());
 			
-		}
+			int ans = 1;
+			while(n-->0){
+				ans<<=1;
+				if(ans>MOD){
+					ans%=MOD;
+				}
+			}
+			ans--;
+			out.println(ans);
+		}out.flush();
 	}
-	
-	private static void print(int[][] graph){
-		for(int i=0; i<graph.length; i++){
-			for(int j=0; j<graph[i].length; j++){
-				System.out.print("["+graph[i][j]+"]");
-			}System.out.println();
-		}System.out.println();
-	}
-	
 }
-
