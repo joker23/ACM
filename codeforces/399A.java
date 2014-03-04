@@ -18,8 +18,49 @@ public class Main {
 	private StringTokenizer st;
 	private PrintWriter out;
 
-	public void solve() throws Exception {
+	int n,p,k, arr[];
+	boolean f,l;
 
+	public void solve() throws Exception {
+		st = new StringTokenizer(in.readLine());
+		n = parseInt(st.nextToken());
+		p = parseInt(st.nextToken());
+		k = parseInt(st.nextToken());
+		arr = new int[1+(2*k)];
+		f = l = true;
+
+		arr[arr.length/2] = p;
+		for(int i=1; i<=k; i++){
+			arr[(arr.length/2) + i] = arr[(arr.length/2) + i - 1] + 1;
+			arr[(arr.length/2) - i] = arr[(arr.length/2) - i + 1] - 1;
+		}
+
+		if(arr[0] <= 1) {
+			f = false;
+		}
+
+		if(arr[arr.length - 1] >= n) {
+			l = false;
+		}
+		String res = "";
+		if (f) {
+			res += "<< ";
+		}
+
+		for(int i=0; i<arr.length; i++){
+			if(arr[i] == arr[arr.length/2]) {
+				res += "("+arr[i]+") ";
+			}
+			else if(arr[i]>=1 && arr[i]<=n){
+				res += arr[i] + " ";
+			}
+		}
+
+		if (l) {
+			res += ">>";
+		}
+
+		out.println(res.trim());
 	}
 
 	public Main() {
