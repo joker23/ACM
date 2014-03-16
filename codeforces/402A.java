@@ -18,35 +18,35 @@ public class Main {
 	private StringTokenizer st;
 	private PrintWriter out;
 
-	private int n;
-	private int[] arr;
-
 	public void solve() throws Exception {
-		n = parseInt(in.readLine().trim());
-		arr = new int[n];
-
 		st = new StringTokenizer(in.readLine());
-		for(int i=0; i<n; i++){
-			arr[i] = parseInt(st.nextToken());
+		int k = parseInt(st.nextToken());
+		int a = parseInt(st.nextToken());
+		int b = parseInt(st.nextToken());
+		int v = parseInt(st.nextToken());
+
+		int numFull = (b/(k - 1 ));
+		int numLeft = (b%(k - 1));
+		int[] boxes = new int[a + 1];
+		Arrays.fill(boxes, 1);
+		int i;
+		int d;
+		for(i=0; i<numFull && i<boxes.length; i++){
+			boxes[i] = k;
+		}
+		if(i<boxes.length)
+			boxes[i] = numLeft + 1;
+		for(i=0; i<boxes.length; i++){
+			boxes[i] *= v;
+		}
+		int ans = 0;
+		int ptr = 0;
+		while(a > 0) {
+			ans ++;
+			a -= boxes[ptr++];
 		}
 
-		sort(arr);
-
-		int ans = 100;
-		for(int i=1; i<n+1; i++){
-			boolean canSolve = true;
-			for(int j=0; j<n; j++){
-				if(arr[j] < j / i) {
-					canSolve = false;
-					break;
-				}
-			}
-
-			if(canSolve) {
-				out.println(i);
-				break;
-			}
-		}
+		System.out.println(ans);
 	}
 
 	public Main() {
