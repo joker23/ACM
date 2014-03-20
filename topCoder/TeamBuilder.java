@@ -2,7 +2,7 @@ import java.util.*;
 import java.math.*;
 
 public class TeamBuilder {
-
+	//SRM 184 div 2 1000
 
 	public int[] specialLocations(String[] paths) {
 		int[] res = new int[2];
