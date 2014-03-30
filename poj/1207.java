@@ -17,31 +17,44 @@ public class Main {
 	private Scanner in;
 	private StringTokenizer st;
 	private PrintWriter out;
+	private int memo[];
 
 	public void solve() throws Exception {
-		int[] line = new int[10001];
-		fill(line, 0);
-		line[0] = -1;
 
-		while(in.hasNext()) {
-			int l = in.nextInt();
-			int h = in.nextInt();
-			int r = in.nextInt();
+		memo = new int[1000001];
+		while(in.hasNextInt()) {
+			int a = in.nextInt();
+			int b = in.nextInt();
+			int ans = 0;
 
-			for(int i=l ; i<r && i < line.length; i++){
-				line[i] = max(h, line[i]);
+			for(int i=min(a, b); i<=max(a,b); i++) {
+				ans = max(ans, runProblem(i));
 			}
+
+			out.println(a + " " + b + " " + ans);
+		}
+	}
+
+	public int runProblem(int n) {
+		long tmp = n;
+		int ans = 1;
+
+		while(tmp != 1) {
+			if(tmp < memo.length && memo[(int)tmp] > 0){
+				return ans + memo[(int)tmp] - 1;
+			}
+
+			if((tmp & 1) == 0) {
+				tmp /= 2;
+			} else {
+				tmp = (tmp * 3) + 1;
+			}
+			ans ++;
 		}
 
-		String ans = "";
+		memo[n] = ans;
 
-		for(int i=1; i<line.length; i++){
-			if(line[i] != line[i-1]){
-				ans += i + " " + line[i] + " ";
-			}
-		}
-
-		out.println(ans.trim());
+		return ans;
 	}
 
 	public Main() {

@@ -53,7 +53,6 @@ public class TeamBuilder {
 
 		return res;
 	}
-
 	private void print(boolean[][] graph) {
 		for(int i=0; i<graph.length; i++){
 			for(int j=0; j<graph[i].length; j++){
