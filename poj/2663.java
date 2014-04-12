@@ -10,7 +10,7 @@ public class Main{
 			System.out.println(solve(n));
 		}
 	}
-	
+
 	public static int solve(int n){
 		if(n == 0) return 1;
 		if(n == 2) return 3;
