@@ -3,7 +3,7 @@ public class Main {
 	static final int INF = Integer.MAX_VALUE;
 	public static void main(String[] args){
 		Scanner in = new Scanner(System.in);
-		
+
 		int n = in.nextInt(), r = in.nextInt();
 		PriorityQueue<Node> pq = new PriorityQueue<Node>();
 		HashMap<Integer, List<Node>> adjList = new HashMap<Integer,List<Node>>();
@@ -12,14 +12,14 @@ public class Main {
 		boolean[] visit1 = new boolean[n+1];
 		boolean[] visit2 = new boolean[n+1];
 		dist[0][1] = 0;
-		
+
 		while(r-->0){
 			int a = in.nextInt(),b = in.nextInt(),c =  in.nextInt();
 			if(!adjList.containsKey(a)) adjList.put(a,new LinkedList<Node>());
 			if(!adjList.containsKey(b)) adjList.put(b, new LinkedList<Node>());
 			adjList.get(a).add(new Node(b,c));
 			adjList.get(b).add(new Node(a,c));
-		} 
+		}
 		pq.add(new Node(1,0));
 		Node curr; int weight;
 		while(!pq.isEmpty()&&!visit2[n]){
@@ -39,7 +39,7 @@ public class Main {
 		}System.out.println(dist[1][n]);
 
 	}
-	
+
 	public static class Node implements Comparable<Node>{
 		Integer a,w;
 		public Node(int a, int w){
