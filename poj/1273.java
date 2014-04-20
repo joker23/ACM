@@ -1,6 +1,5 @@
 import java.util.*;
 public class Main {
-	
 	final static int INF = Integer.MAX_VALUE;
 	static Scanner in = new Scanner(System.in);
 	public static void main(String[] args){
@@ -25,7 +24,7 @@ public class Main {
 						}
 					}
 				}
-				if(prev[sink] == -1) 
+				if(prev[sink] == -1)
 					break; // no more connections
 				int minCut = INF;
 				for(int v = sink, u = prev[v]; u!=-1; v = u, u = prev[v])
@@ -36,6 +35,6 @@ public class Main {
 				}
 				ret += minCut;
 			}System.out.println(ret);
-		} 
+		}
 	}
 }

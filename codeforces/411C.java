@@ -21,7 +21,6 @@ public class Main {
 
 	private DecimalFormat fmt = new DecimalFormat("0.0000000000");
 
-
 	public void solve() throws Exception {
 		int[] p1att = new int[2];
 		int[] p1def = new int[2];
@@ -41,15 +40,17 @@ public class Main {
 
 		int[][] lookup = new int[2][2];
 
+		// brute the force (aka minimax array)
 		lookup[0][0] = point(p1att[0], p1def[1], p2att[0], p2def[1]);
 		lookup[1][0] = point(p1att[1], p1def[0], p2att[0], p2def[1]);
 		lookup[0][1] = point(p1att[0], p1def[1], p2att[1], p2def[0]);
 		lookup[1][1] = point(p1att[1], p1def[0], p2att[1], p2def[0]);
 
-		//choose column
+		//choose row
 		int ans = Integer.MIN_VALUE;
 		for(int i=0; i<2; i++) {
 			int min = Integer.MAX_VALUE;
+			//choose column
 			for(int j=0; j<2; j++) {
 				min = min(min, lookup[i][j]);
 			}
