@@ -1,7 +1,12 @@
 import java.util.*;
 import java.math.*;
+<<<<<<< HEAD
 import java.text.*;
 import java.io.*;
+=======
+import java.io.*;
+import java.text.*;
+>>>>>>> ac7117327942436241cdb24d832c28891e8ad911
 import java.awt.Point;
 
 import static java.util.Arrays.*;
@@ -15,6 +20,7 @@ import static java.util.Collections.*;
 
 public class Main {
 
+<<<<<<< HEAD
 	// IO Imports
 	private BufferedReader in;
 	private StringTokenizer st;
@@ -99,11 +105,36 @@ public class Main {
 			}
 		}else {
 			out.println("C");
+=======
+	private Scanner in;
+	private StringTokenizer st;
+	private PrintWriter out;
+
+	private DecimalFormat fmt = new DecimalFormat("0.0000000000");
+
+
+	public void solve() throws Exception {
+		long[] dp = new long[101];
+
+		dp[1] = 1;
+		for(int i=2; i<=100; i++) {
+			dp[i] = i* i + dp[i-1];
+		}
+
+		int n;
+
+		while((n = in.nextInt()) > 0) {
+			out.println(dp[n]);
+>>>>>>> ac7117327942436241cdb24d832c28891e8ad911
 		}
 	}
 
 	public Main() {
+<<<<<<< HEAD
 		this.in = new BufferedReader(new InputStreamReader(System.in));
+=======
+		this.in = new Scanner(System.in);
+>>>>>>> ac7117327942436241cdb24d832c28891e8ad911
 		this.out = new PrintWriter(System.out);
 	}
 
