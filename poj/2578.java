@@ -3,7 +3,7 @@ import java.math.*;
 import java.io.*;
 
 public class Main {
-	
+
 	//IO tools
 	static BufferedReader in;
 	static StringTokenizer st;
@@ -12,10 +12,10 @@ public class Main {
 	//static variables
 
 	public static void main(String[] args) throws IOException{
-		
+
 		in = new BufferedReader(new InputStreamReader(System.in));
 		out = new PrintWriter(System.out);
-		
+
 		//code starts here
 		st = new StringTokenizer(in.readLine());
 
@@ -28,7 +28,7 @@ public class Main {
 				crash = true;
 			}
 		}
-	
+
 		if(crash){
 			out.println("CRASH "+test);
 		} else{

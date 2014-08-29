@@ -3,7 +3,7 @@ import java.math.*;
 import java.io.*;
 
 public class Main {
-	
+
 	//IO tools
 	static BufferedReader in;
 	static StringTokenizer st;
@@ -13,7 +13,7 @@ public class Main {
 	static int n, k;
 	static Fighter[] fighters;
 	public static void main(String[] args) throws IOException{
-		
+
 		in = new BufferedReader(new InputStreamReader(System.in));
 		out = new PrintWriter(System.out);
 
@@ -21,14 +21,14 @@ public class Main {
 		st = new StringTokenizer(in.readLine());
 		n = Integer.parseInt(st.nextToken());
 		k = Integer.parseInt(st.nextToken());
-		
+
 		fighters = new Fighter[n];
 
 		for(int i=0; i<n; i++){
 			st = new StringTokenizer(in.readLine());
 			fighters[i] = new Fighter(Integer.parseInt(st.nextToken()), Integer.parseInt(st.nextToken()));
 		}
-	
+
 		int minEffort = Integer.MAX_VALUE;
 		for(int i=0; i < 1<<(n+1); i++){
 			int place = findPlace(i);
@@ -37,7 +37,7 @@ public class Main {
 				minEffort = Math.min(minEffort, effort);
 			}
 		}
-		
+
 		if(minEffort == Integer.MAX_VALUE){
 			out.println(-1);
 		} else{
@@ -54,7 +54,7 @@ public class Main {
 				points ++;
 			}
 		}
-		
+
 		int place = n + 1;
 		for(int i=0; i < n; i++){
 			int opponent = ((beaten & (1<<i)) > 0) ? fighters[i].p : fighters[i].p + 1;
