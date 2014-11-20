@@ -1,9 +1,12 @@
 *.jnlp
 temp
 *.tags
+*.html
 ulticoder2014
 codeChef
 cache
 other
 
+.metadata/
+bin/
 googlecodejam2014
