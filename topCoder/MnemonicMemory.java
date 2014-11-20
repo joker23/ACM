@@ -1,39 +1,30 @@
-import java.util.*;
-import java.math.*;
-import java.text.*;
-import java.io.*;
-import java.awt.Point;
-
-import static java.util.Arrays.*;
-import static java.lang.Integer.*;
-import static java.lang.Double.*;
-import static java.lang.Long.*;
-import static java.lang.Short.*;
-import static java.lang.Math.*;
-import static java.math.BigInteger.*;
-import static java.util.Collections.*;
+import java.util.Arrays;
 
 public class MnemonicMemory {
 	public String getPhrase(String number, String[] dictionary) {
-		sort(dictionary);
-		boolean[] alreadyUsed = new boolean[dictionary.length];
-		String ans = "";
 
-		for (char c : number.toCharArray()) {
-			int num = c - '0';
-			for (int i=0; i<dictionary.length; i++) {
-				if (dictionary[i].length() == num && !alreadyUsed[i]) {
-					alreadyUsed[i] = true;
-					ans += dictionary[i] + " ";
+		// Sort the dictionary to ensure that we are outputting in
+		// alphabetical order
+		Arrays.sort(dictionary);
+
+		// Array to keep track of words that we already used
+		boolean[] alreadyUsed = new boolean[dictionary.length];
+
+		String ans = "";
+		for (int i=0; i<number.length(); i++) {
+			int num = number.charAt(i) - '0'; // Cool trick to convert char to int
+
+			// Finds the first matched string to append to the answer
+			for (int j=0; j<dictionary.length; j++) {
+				if (dictionary[j].length() == num && !alreadyUsed[j]) {
+					alreadyUsed[j] = true;
+					ans += dictionary[j] + " ";
 					break;
 				}
 			}
 		}
 
+		// Trim out extra spaces
 		return ans.trim();
-	}
-
-	public static void main(String[] args) {
-		MnemonicMemory temp = new MnemonicMemory();
 	}
 }
