@@ -1,4 +1,3 @@
-package round501B;
 
 import java.util.*;
 import java.math.*;
@@ -27,15 +26,15 @@ public class A {
 
 	public void solve() throws Exception {
 		st = new StringTokenizer(in.readLine());
-		
+
 		int a = Integer.parseInt(st.nextToken());
 		int b = Integer.parseInt(st.nextToken());
 		int c = Integer.parseInt(st.nextToken());
 		int d = Integer.parseInt(st.nextToken());
-		
+
 		int v = Math.max(3 * a / 10, a - (a/250) * c);
 		int m = Math.max(3 * b / 10, b - (b/250) * d);
-		
+
 		if (v < m) {
 			out.println("Vasya");
 		} else if (v > m) {

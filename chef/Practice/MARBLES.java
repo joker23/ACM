@@ -1,6 +1,5 @@
-package r290B;
-
-import java.util.*;
+ package practice;
+import java. util.*;
 import java.math.*;
 import java.io.*;
 import java.text.*;
@@ -15,10 +14,10 @@ import static java.lang.Math.*;
 import static java.math.BigInteger.*;
 import static java.util.Collections.*;
 
-public class A {
+public class MARBLES {
 
 	// IO Imports
-	private Scanner in;
+	private BufferedReader in;
 	private StringTokenizer st;
 	private PrintWriter out;
 
@@ -26,39 +25,29 @@ public class A {
 	private DecimalFormat fmt = new DecimalFormat("0.0000000000");
 
 	public void solve() throws Exception {
-		int n = in.nextInt();
-		int m = in.nextInt();
-
-		char[][] ans = new char[n][m];
-		boolean r = true;
-
-		for (int i=0; i<n; i++) {
-			Arrays.fill(ans[i], '.');
-		}
-
-		for (int i = 0; i<n; i++) {
-			if ((i & 1) == 0) {
-				Arrays.fill(ans[i], '#');
-			} else {
-				if (r) {
-					ans[i][m - 1] = '#';
-				} else {
-					ans[i][0] = '#';
-				}
-
-				r = !r;
-			}
-		}
-
-		for (int i=0; i<n; i++) {
-			for(int j=0; j<m; j++) {
-				out.print(ans[i][j]);
-			} out.println();
+		int t = Integer.parseInt(in.readLine());
+		
+		while (t --> 0) {
+			st = new StringTokenizer(in.readLine());
+			int n = Integer.parseInt(st.nextToken());
+			int k = Integer.parseInt(st.nextToken());
+			
+			out.println(c(n - 1, k - 1));
 		}
 	}
+	
+	private BigInteger c (int n, int k) {
+		k = Math.min(k, n-k);
+		BigInteger ret = BigInteger.ONE ;
+		for (int i=n-k+1; i<=n; i++)
+			ret = ret.multiply(BigInteger.valueOf(i));
+		for ( int i=2; i<=k; i++)
+			ret = ret.divide(BigInteger.valueOf(i));
+		return ret ;
+	}
 
-	public A() {
-		this.in = new Scanner(System.in);
+	public MARBLES() {
+		this.in = new BufferedReader(new InputStreamReader(System.in));
 		this.out = new PrintWriter(System.out);
 	}
 
@@ -73,7 +62,7 @@ public class A {
 	}
 
 	public static void main(String[] args) throws Exception {
-		A solver = new A();
+		MARBLES solver = new MARBLES();
 		solver.solve();
 		solver.end();
 	}

@@ -13,7 +13,7 @@ import static java.lang.Math.*;
 import static java.math.BigInteger.*;
 import static java.util.Collections.*;
 
-public class C {
+public class CHEFEQ {
 
 	// IO Imports
 	private Scanner in;
@@ -24,50 +24,26 @@ public class C {
 	private DecimalFormat fmt = new DecimalFormat("0.0000000000");
 
 	public void solve() throws Exception {
-		int m = in.nextInt();
+		int[] count = new int[100001];
+		
 		int t = in.nextInt();
-		int r = in.nextInt();
-
-		Queue<Integer> ghost = new LinkedList<Integer>();
-		PriorityQueue<Integer> candle = new PriorityQueue<Integer>();
-
-		while (m --> 0) {
-			ghost.add(in.nextInt());
+		
+		while (t --> 0) {
+			Arrays.fill(count, 0);
+			int n = in.nextInt();
+			int m = 0;
+			for (int i=0; i<n; i++) {
+				int tmp = in.nextInt();
+				
+				count[tmp] ++;
+				m = Math.max(count[tmp], m);
+			}
+			
+			out.println(n - m);
 		}
-
-		int ans = 0;
-
-		boolean possible = true;
-
-		while (!ghost.isEmpty()) {
-			int curr = ghost.poll();
-
-			while(!candle.isEmpty() && candle.peek() + t < curr) {
-				candle.poll();
-			}
-
-			if (candle.size() >= r) {
-				continue;
-			}
-
-			for (int i = 1; i<=r && candle.size() < r; i++) {
-				if (!candle.contains((Integer) (curr - i)) && (curr - i) + t >= curr) {
-					ans ++;
-					candle.add(curr - i);
-				}
-			}
-
-			if (candle.size() < r) {
-				possible = false;
-				break;
-			}
-		}
-
-		if (possible) System.out.println(ans);
-		else System.out.println(-1);
 	}
 
-	public C() {
+	public CHEFEQ() {
 		this.in = new Scanner(System.in);
 		this.out = new PrintWriter(System.out);
 	}
@@ -83,7 +59,7 @@ public class C {
 	}
 
 	public static void main(String[] args) throws Exception {
-		C solver = new C();
+		CHEFEQ solver = new CHEFEQ();
 		solver.solve();
 		solver.end();
 	}

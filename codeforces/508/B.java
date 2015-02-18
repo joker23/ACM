@@ -1,4 +1,3 @@
-package r288B;
 
 import java.util.*;
 import java.math.*;
@@ -27,12 +26,12 @@ public class B {
 
 	public void solve() throws Exception {
 		char[] n = in.next().trim().toCharArray();
-		
+
 		int len = n.length - 1;
 		int count_evens = 0;
 		int last = -1;
 		boolean found = false;
-		
+
 		for (int i=0; i<len; i++) {
 			int num = n[i] - '0';
 			if ((num & 1) == 0) {
@@ -47,13 +46,13 @@ public class B {
 				}
 			}
 		}
-		
+
 		if (!found && last > -1) {
 			char tmp = n[len];
 			n[len] = n[last];
 			n[last] = tmp;
 		}
-		
+
 		if (count_evens == 0) {
 			out.println(-1);
 		} else {

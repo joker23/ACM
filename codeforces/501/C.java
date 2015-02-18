@@ -1,4 +1,3 @@
-package round501B;
 import java.util.*;
 import java.math.*;
 import java.io.*;
@@ -26,23 +25,23 @@ public class C {
 
 	public void solve() throws Exception {
 		int n = Integer.parseInt(in.readLine());
-		
+
 		int[] degree = new int[n];
 		int[] xorsum = new int[n];
 		Queue<Integer> q = new LinkedList<Integer>();
-		
+
 		for (int i=0; i<n; i++) {
 			st = new StringTokenizer(in.readLine());
 			degree[i] = Integer.parseInt(st.nextToken());
 			xorsum[i] = Integer.parseInt(st.nextToken());
-			
+
 			if (degree[i] == 1) {
 				q.add(i);
 			}
 		}
-		
+
 		List<Point> ans = new ArrayList<Point>();
-		
+
 		while (!q.isEmpty()) {
 			int from = q.poll();
 			if (degree[from] == 0) {
@@ -50,18 +49,18 @@ public class C {
 			}
 			int to = xorsum[from];
 			xorsum[from] = 0;
-			
+
 			xorsum[to] ^= from;
 			degree[to] --;
 			if (degree[to] == 1) {
 				q.add(to);
 			}
-			
+
 			ans.add(new Point(from, to));
 		}
-		
+
 		out.println(ans.size());
-		
+
 		for (Point p: ans) {
 			out.println(p.x + " " + p.y);
 		}

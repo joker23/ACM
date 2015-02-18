@@ -1,5 +1,4 @@
-package r290B;
-
+package practice;
 import java.util.*;
 import java.math.*;
 import java.io.*;
@@ -15,50 +14,43 @@ import static java.lang.Math.*;
 import static java.math.BigInteger.*;
 import static java.util.Collections.*;
 
-public class A {
+public class COINS {
 
 	// IO Imports
-	private Scanner in;
+	private BufferedReader in;
 	private StringTokenizer st;
+	private Scanner sc;
 	private PrintWriter out;
+	private HashMap<Long, Long> dp;
 
 	// Pretty Stuff
 	private DecimalFormat fmt = new DecimalFormat("0.0000000000");
 
 	public void solve() throws Exception {
-		int n = in.nextInt();
-		int m = in.nextInt();
-
-		char[][] ans = new char[n][m];
-		boolean r = true;
-
-		for (int i=0; i<n; i++) {
-			Arrays.fill(ans[i], '.');
+		sc = new Scanner(System.in);
+		dp = new HashMap<Long, Long>();
+		
+		while (sc.hasNext()) {
+			long n = sc.nextLong();
+			dp.clear();
+			out.println(r(n));
 		}
-
-		for (int i = 0; i<n; i++) {
-			if ((i & 1) == 0) {
-				Arrays.fill(ans[i], '#');
-			} else {
-				if (r) {
-					ans[i][m - 1] = '#';
-				} else {
-					ans[i][0] = '#';
-				}
-
-				r = !r;
-			}
-		}
-
-		for (int i=0; i<n; i++) {
-			for(int j=0; j<m; j++) {
-				out.print(ans[i][j]);
-			} out.println();
+	}
+	
+	private long r(long n) {
+		if (n == 0) {
+			return 0;
+		} else if(dp.containsKey(n)) {
+			return dp.get(n);
+		}else {
+			long ret = Math.max(n, r(n/2) + r(n/3) + r(n/4));
+			dp.put(n, ret);
+			return ret;
 		}
 	}
 
-	public A() {
-		this.in = new Scanner(System.in);
+	public COINS() {
+		this.in = new BufferedReader(new InputStreamReader(System.in));
 		this.out = new PrintWriter(System.out);
 	}
 
@@ -73,7 +65,7 @@ public class A {
 	}
 
 	public static void main(String[] args) throws Exception {
-		A solver = new A();
+		COINS solver = new COINS();
 		solver.solve();
 		solver.end();
 	}

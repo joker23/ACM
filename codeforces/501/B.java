@@ -1,4 +1,3 @@
-package round501B;
 
 import java.util.*;
 import java.math.*;
@@ -28,15 +27,15 @@ public class B {
 	public void solve() throws Exception {
 		// map new to old
 		HashMap<String, String> map = new HashMap<String, String>();
-		
+
 		int n = Integer.parseInt(in.readLine());
-		
+
 		for (int i=0; i<n; i++) {
 			st = new StringTokenizer(in.readLine());
-			
+
 			String a = st.nextToken();
 			String b = st.nextToken();
-			
+
 			if (!map.containsKey(a)) {
 				map.put(b, a);
 			} else {
@@ -44,9 +43,9 @@ public class B {
 				map.put(b, c);
 			}
 		}
-		
+
 		out.println(map.size());
-		
+
 		for (String s : map.keySet()) {
 			out.println(map.get(s) + " " +s);
 		}

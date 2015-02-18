@@ -1,3 +1,4 @@
+package practice;
 import java.util.*;
 import java.math.*;
 import java.io.*;
@@ -13,10 +14,10 @@ import static java.lang.Math.*;
 import static java.math.BigInteger.*;
 import static java.util.Collections.*;
 
-public class C {
+public class NAME2 {
 
 	// IO Imports
-	private Scanner in;
+	private BufferedReader in;
 	private StringTokenizer st;
 	private PrintWriter out;
 
@@ -24,51 +25,37 @@ public class C {
 	private DecimalFormat fmt = new DecimalFormat("0.0000000000");
 
 	public void solve() throws Exception {
-		int m = in.nextInt();
-		int t = in.nextInt();
-		int r = in.nextInt();
-
-		Queue<Integer> ghost = new LinkedList<Integer>();
-		PriorityQueue<Integer> candle = new PriorityQueue<Integer>();
-
-		while (m --> 0) {
-			ghost.add(in.nextInt());
-		}
-
-		int ans = 0;
-
-		boolean possible = true;
-
-		while (!ghost.isEmpty()) {
-			int curr = ghost.poll();
-
-			while(!candle.isEmpty() && candle.peek() + t < curr) {
-				candle.poll();
+		int t = Integer.parseInt(in.readLine());
+		
+		while (t --> 0) {
+			st = new StringTokenizer(in.readLine());
+			
+			String str1 = st.nextToken();
+			String str2 = st.nextToken();
+			
+			// str1 is longer
+			if (str1.length() < str2.length()) {
+				String tmp = str1;
+				str1 = str2;
+				str2 = tmp;
 			}
-
-			if (candle.size() >= r) {
-				continue;
-			}
-
-			for (int i = 1; i<=r && candle.size() < r; i++) {
-				if (!candle.contains((Integer) (curr - i)) && (curr - i) + t >= curr) {
-					ans ++;
-					candle.add(curr - i);
+			
+			int ptr1 = 0;
+			int ptr2 = 0;
+			
+			for (;ptr2 < str2.length() && ptr1 < str1.length(); ptr1 ++) {
+				if (str1.charAt(ptr1) == str2.charAt(ptr2)) {
+					ptr2 ++;
 				}
 			}
-
-			if (candle.size() < r) {
-				possible = false;
-				break;
-			}
+			
+			String ans = ptr2 == str2.length() ? "YES" : "NO";
+			out.println(ans);
 		}
-
-		if (possible) System.out.println(ans);
-		else System.out.println(-1);
 	}
 
-	public C() {
-		this.in = new Scanner(System.in);
+	public NAME2() {
+		this.in = new BufferedReader(new InputStreamReader(System.in));
 		this.out = new PrintWriter(System.out);
 	}
 
@@ -83,7 +70,7 @@ public class C {
 	}
 
 	public static void main(String[] args) throws Exception {
-		C solver = new C();
+		NAME2 solver = new NAME2();
 		solver.solve();
 		solver.end();
 	}
